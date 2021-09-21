@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLyBanVeXeKhachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChuyenXe">
+          <Key>
+            <PropertyRef Name="MaCX" />
+          </Key>
+          <Property Name="MaCX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenCX" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DiemDi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DiemDen" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GioDi" Type="time" Precision="7" Nullable="false" />
+          <Property Name="BangGia" Type="money" Nullable="false" />
+          <Property Name="MaXe" Type="int" Nullable="false" />
+          <Property Name="MaNV" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiNhanVien">
+          <Key>
+            <PropertyRef Name="MaLoaiNV" />
+          </Key>
+          <Property Name="MaLoaiNV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiNV" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="MaLoaiXe" />
+          </Key>
+          <Property Name="MaLoaiXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiXe" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HoTen" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="NgaySinh" Type="date" Nullable="false" />
+          <Property Name="GioiTinh" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="DiaChi" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="CMND" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="DienThoai" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="VeXe">
+          <Key>
+            <PropertyRef Name="MaVX" />
+          </Key>
+          <Property Name="MaVX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKH" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="SDTKH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaCX" Type="int" Nullable="false" />
+          <Property Name="MaNV" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="MaXe" />
+          </Key>
+          <Property Name="MaXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BienSo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SoGhe" Type="int" Nullable="false" />
+          <Property Name="MaLoaiXe" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ChuyenXe__MaNV__2F10007B">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="ChuyenXe">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChuyenXe__MaXe__2E1BDC42">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="MaXe" />
+            </Principal>
+            <Dependent Role="ChuyenXe">
+              <PropertyRef Name="MaXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaLoai__267ABA7A">
+          <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiNhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VeXe__MaNV__31EC6D26">
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="1" />
+          <End Role="VeXe" Type="Self.VeXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenXe">
+              <PropertyRef Name="MaCX" />
+            </Principal>
+            <Dependent Role="VeXe">
+              <PropertyRef Name="MaCX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VeXe__MaNV__32E0915F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="VeXe" Type="Self.VeXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="VeXe">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xe__MaLoaiXe__2B3F6F97">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
+          <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="MaLoaiXe" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="MaLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyBanVeXeKhachModelStoreContainer">
+          <EntitySet Name="ChuyenXe" EntityType="Self.ChuyenXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiNhanVien" EntityType="Self.LoaiNhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiXe" EntityType="Self.LoaiXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VeXe" EntityType="Self.VeXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChuyenXe__MaNV__2F10007B" Association="Self.FK__ChuyenXe__MaNV__2F10007B">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="ChuyenXe" EntitySet="ChuyenXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChuyenXe__MaXe__2E1BDC42" Association="Self.FK__ChuyenXe__MaXe__2E1BDC42">
+            <End Role="Xe" EntitySet="Xe" />
+            <End Role="ChuyenXe" EntitySet="ChuyenXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaLoai__267ABA7A" Association="Self.FK__NhanVien__MaLoai__267ABA7A">
+            <End Role="LoaiNhanVien" EntitySet="LoaiNhanVien" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VeXe__MaNV__31EC6D26" Association="Self.FK__VeXe__MaNV__31EC6D26">
+            <End Role="ChuyenXe" EntitySet="ChuyenXe" />
+            <End Role="VeXe" EntitySet="VeXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VeXe__MaNV__32E0915F" Association="Self.FK__VeXe__MaNV__32E0915F">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="VeXe" EntitySet="VeXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xe__MaLoaiXe__2B3F6F97" Association="Self.FK__Xe__MaLoaiXe__2B3F6F97">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="Xe" EntitySet="Xe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyBanVeXeKhachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChuyenXe">
+          <Key>
+            <PropertyRef Name="MaCX" />
+          </Key>
+          <Property Name="MaCX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenCX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiemDi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiemDen" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GioDi" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="BangGia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MaXe" Type="Int32" Nullable="false" />
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChuyenXe__MaNV__2F10007B" FromRole="ChuyenXe" ToRole="NhanVien" />
+          <NavigationProperty Name="Xe" Relationship="Self.FK__ChuyenXe__MaXe__2E1BDC42" FromRole="ChuyenXe" ToRole="Xe" />
+          <NavigationProperty Name="VeXes" Relationship="Self.FK__VeXe__MaNV__31EC6D26" FromRole="ChuyenXe" ToRole="VeXe" />
+        </EntityType>
+        <EntityType Name="LoaiNhanVien">
+          <Key>
+            <PropertyRef Name="MaLoaiNV" />
+          </Key>
+          <Property Name="MaLoaiNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiNV" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaLoai__267ABA7A" FromRole="LoaiNhanVien" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="MaLoaiXe" />
+          </Key>
+          <Property Name="MaLoaiXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiXe" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Xes" Relationship="Self.FK__Xe__MaLoaiXe__2B3F6F97" FromRole="LoaiXe" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CMND" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChuyenXes" Relationship="Self.FK__ChuyenXe__MaNV__2F10007B" FromRole="NhanVien" ToRole="ChuyenXe" />
+          <NavigationProperty Name="LoaiNhanVien" Relationship="Self.FK__NhanVien__MaLoai__267ABA7A" FromRole="NhanVien" ToRole="LoaiNhanVien" />
+          <NavigationProperty Name="VeXes" Relationship="Self.FK__VeXe__MaNV__32E0915F" FromRole="NhanVien" ToRole="VeXe" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VeXe">
+          <Key>
+            <PropertyRef Name="MaVX" />
+          </Key>
+          <Property Name="MaVX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SDTKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaCX" Type="Int32" Nullable="false" />
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ChuyenXe" Relationship="Self.FK__VeXe__MaNV__31EC6D26" FromRole="VeXe" ToRole="ChuyenXe" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__VeXe__MaNV__32E0915F" FromRole="VeXe" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="MaXe" />
+          </Key>
+          <Property Name="MaXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BienSo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoGhe" Type="Int32" Nullable="false" />
+          <Property Name="MaLoaiXe" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChuyenXes" Relationship="Self.FK__ChuyenXe__MaXe__2E1BDC42" FromRole="Xe" ToRole="ChuyenXe" />
+          <NavigationProperty Name="LoaiXe" Relationship="Self.FK__Xe__MaLoaiXe__2B3F6F97" FromRole="Xe" ToRole="LoaiXe" />
+        </EntityType>
+        <Association Name="FK__ChuyenXe__MaNV__2F10007B">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="ChuyenXe">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChuyenXe__MaXe__2E1BDC42">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="MaXe" />
+            </Principal>
+            <Dependent Role="ChuyenXe">
+              <PropertyRef Name="MaXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VeXe__MaNV__31EC6D26">
+          <End Role="ChuyenXe" Type="Self.ChuyenXe" Multiplicity="1" />
+          <End Role="VeXe" Type="Self.VeXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenXe">
+              <PropertyRef Name="MaCX" />
+            </Principal>
+            <Dependent Role="VeXe">
+              <PropertyRef Name="MaCX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaLoai__267ABA7A">
+          <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiNhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xe__MaLoaiXe__2B3F6F97">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="1" />
+          <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="MaLoaiXe" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="MaLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VeXe__MaNV__32E0915F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="VeXe" Type="Self.VeXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="VeXe">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyBanVeXeKhachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChuyenXes" EntityType="Self.ChuyenXe" />
+          <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
+          <EntitySet Name="LoaiXes" EntityType="Self.LoaiXe" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="VeXes" EntityType="Self.VeXe" />
+          <EntitySet Name="Xes" EntityType="Self.Xe" />
+          <AssociationSet Name="FK__ChuyenXe__MaNV__2F10007B" Association="Self.FK__ChuyenXe__MaNV__2F10007B">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="ChuyenXe" EntitySet="ChuyenXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChuyenXe__MaXe__2E1BDC42" Association="Self.FK__ChuyenXe__MaXe__2E1BDC42">
+            <End Role="Xe" EntitySet="Xes" />
+            <End Role="ChuyenXe" EntitySet="ChuyenXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VeXe__MaNV__31EC6D26" Association="Self.FK__VeXe__MaNV__31EC6D26">
+            <End Role="ChuyenXe" EntitySet="ChuyenXes" />
+            <End Role="VeXe" EntitySet="VeXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaLoai__267ABA7A" Association="Self.FK__NhanVien__MaLoai__267ABA7A">
+            <End Role="LoaiNhanVien" EntitySet="LoaiNhanViens" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xe__MaLoaiXe__2B3F6F97" Association="Self.FK__Xe__MaLoaiXe__2B3F6F97">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="Xe" EntitySet="Xes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VeXe__MaNV__32E0915F" Association="Self.FK__VeXe__MaNV__32E0915F">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="VeXe" EntitySet="VeXes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyBanVeXeKhachModelStoreContainer" CdmEntityContainer="QuanLyBanVeXeKhachEntities">
+          <EntitySetMapping Name="ChuyenXes">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.ChuyenXe">
+              <MappingFragment StoreEntitySet="ChuyenXe">
+                <ScalarProperty Name="MaCX" ColumnName="MaCX" />
+                <ScalarProperty Name="TenCX" ColumnName="TenCX" />
+                <ScalarProperty Name="DiemDi" ColumnName="DiemDi" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="GioDi" ColumnName="GioDi" />
+                <ScalarProperty Name="BangGia" ColumnName="BangGia" />
+                <ScalarProperty Name="MaXe" ColumnName="MaXe" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiNhanViens">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.LoaiNhanVien">
+              <MappingFragment StoreEntitySet="LoaiNhanVien">
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+                <ScalarProperty Name="TenLoaiNV" ColumnName="TenLoaiNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiXes">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.LoaiXe">
+              <MappingFragment StoreEntitySet="LoaiXe">
+                <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
+                <ScalarProperty Name="TenLoaiXe" ColumnName="TenLoaiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VeXes">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.VeXe">
+              <MappingFragment StoreEntitySet="VeXe">
+                <ScalarProperty Name="MaVX" ColumnName="MaVX" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="SDTKH" ColumnName="SDTKH" />
+                <ScalarProperty Name="MaCX" ColumnName="MaCX" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Xes">
+            <EntityTypeMapping TypeName="QuanLyBanVeXeKhachModel.Xe">
+              <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="MaXe" ColumnName="MaXe" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+                <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
