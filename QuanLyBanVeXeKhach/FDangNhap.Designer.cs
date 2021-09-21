@@ -104,6 +104,7 @@ namespace QuanLyBanVeXeKhach
             this.Controls.Add(this.txtTenDN);
             this.Controls.Add(this.cbDN);
             this.Name = "FDangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.FDangNhap_Load);
             this.ResumeLayout(false);

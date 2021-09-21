@@ -16,29 +16,5 @@ namespace QuanLyBanVeXeKhach
         {
             InitializeComponent();
         }
-
-        private void menuNV_Click(object sender, EventArgs e)
-        {
-            FNhanVien f = new FNhanVien();
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
-        }
-
-        private void menuChuyenXe_Click(object sender, EventArgs e)
-        {
-            FChuyenXe f = new FChuyenXe();
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
-        }
-
-        private void menuXe_Click(object sender, EventArgs e)
-        {
-            FXe f = new FXe();
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
-        }
     }
 }

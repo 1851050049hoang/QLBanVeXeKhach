@@ -60,24 +60,6 @@
       <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_NhanVien.cs" />
-    <Compile Include="FBanVe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FBanVe.Designer.cs">
-      <DependentUpon>FBanVe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FChuyenXe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FChuyenXe.Designer.cs">
-      <DependentUpon>FChuyenXe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FNhanVien.Designer.cs">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="FQLBanVe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,18 +77,6 @@
     </Compile>
     <Compile Include="FQuanTri.Designer.cs">
       <DependentUpon>FQuanTri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FThongKe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FThongKe.Designer.cs">
-      <DependentUpon>FThongKe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FXe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FXe.Designer.cs">
-      <DependentUpon>FXe.cs</DependentUpon>
     </Compile>
     <Compile Include="LoaiNhanVien.cs">
       <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
@@ -143,15 +113,6 @@
     <Compile Include="Xe.cs">
       <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FBanVe.resx">
-      <DependentUpon>FBanVe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FChuyenXe.resx">
-      <DependentUpon>FChuyenXe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FNhanVien.resx">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FQLBanVe.resx">
       <DependentUpon>FQLBanVe.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,12 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FQuanTri.resx">
       <DependentUpon>FQuanTri.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FThongKe.resx">
-      <DependentUpon>FThongKe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FXe.resx">
-      <DependentUpon>FXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

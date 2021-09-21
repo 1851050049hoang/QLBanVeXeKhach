@@ -21,21 +21,5 @@ namespace QuanLyBanVeXeKhach
         {
 
         }
-
-        private void menuBanVe_Click(object sender, EventArgs e)
-        {
-            FBanVe f = new FBanVe();
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
-        }
-
-        private void menuThongKe_Click(object sender, EventArgs e)
-        {
-            FThongKe f = new FThongKe();
-            f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
-        }
     }
 }
