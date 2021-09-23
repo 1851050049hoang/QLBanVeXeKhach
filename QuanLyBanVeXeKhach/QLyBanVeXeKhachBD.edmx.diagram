@@ -4,14 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="008c30c9718748d69bf893d41762b98f" Name="Diagram1">
+      <Diagram DiagramId="a53245efbb4543b58ea1c37fa1d38048" Name="Diagram1">
         <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.ChuyenXe" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.LoaiNhanVien" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.LoaiXe" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.NhanVien" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.VeXe" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.Xe" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.LoaiNhanVien" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.LoaiXe" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.NhanVien" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.VeXe" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanVeXeKhachModel.Xe" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="QuanLyBanVeXeKhachModel.FK__ChuyenXe__MaNV__2F10007B" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanVeXeKhachModel.FK__ChuyenXe__MaXe__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanVeXeKhachModel.FK__VeXe__MaNV__31EC6D26" ManuallyRouted="false" />

@@ -55,11 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\BUS_ChuyenXe.cs" />
     <Compile Include="BUS\BUS_NhanVien.cs" />
+    <Compile Include="BUS\BUS_Xe.cs" />
     <Compile Include="ChuyenXe.cs">
       <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAO_ChuyenXe.cs" />
     <Compile Include="DAO\DAO_NhanVien.cs" />
+    <Compile Include="DAO\DAO_Xe.cs" />
     <Compile Include="FQLBanVe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,9 +107,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLyBanVeXeKhachBD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
     </Compile>
     <Compile Include="VeXe.cs">
       <DependentUpon>QLyBanVeXeKhachBD.tt</DependentUpon>
@@ -153,19 +154,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="QLyBanVeXeKhachBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLyBanVeXeKhachBD.Context.cs</LastGenOutput>
       <DependentUpon>QLyBanVeXeKhachBD.edmx</DependentUpon>
+      <LastGenOutput>QLyBanVeXeKhachBD.Context.cs</LastGenOutput>
     </Content>
     <Content Include="QLyBanVeXeKhachBD.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLyBanVeXeKhachBD.edmx</DependentUpon>
       <LastGenOutput>QLyBanVeXeKhachBD.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

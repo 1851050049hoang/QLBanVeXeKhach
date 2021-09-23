@@ -18,7 +18,7 @@ namespace QuanLyBanVeXeKhach
         public string TenKH { get; set; }
         public string SDTKH { get; set; }
         public int MaCX { get; set; }
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
     
         public virtual ChuyenXe ChuyenXe { get; set; }
         public virtual NhanVien NhanVien { get; set; }

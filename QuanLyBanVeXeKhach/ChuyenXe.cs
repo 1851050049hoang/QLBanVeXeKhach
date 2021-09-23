@@ -23,11 +23,13 @@ namespace QuanLyBanVeXeKhach
         public int MaCX { get; set; }
         public string TenCX { get; set; }
         public string DiemDi { get; set; }
+        public string ChiTietDiemDi { get; set; }
         public string DiemDen { get; set; }
-        public System.TimeSpan GioDi { get; set; }
+        public string ChiTietDiemDen { get; set; }
+        public string GioDi { get; set; }
         public decimal BangGia { get; set; }
         public int MaXe { get; set; }
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
         public virtual Xe Xe { get; set; }

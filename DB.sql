@@ -11,7 +11,7 @@ create table LoaiNhanVien(
 )
 
 create table NhanVien(
-	MaNV Char(10) primary key not null,
+	MaNV int IDENTITY(1851050001,1) primary key not null,
 	HoTen nchar(30) not null,
 	NgaySinh date not null,
 	GioiTinh nchar(15) not null,
@@ -41,11 +41,13 @@ create table ChuyenXe(
 	MaCX int IDENTITY primary key not null,
 	TenCX varchar(30) not null,
 	DiemDi varchar(30) not null,
+	ChiTietDiemDi varchar(100) not null,
 	DiemDen varchar(30) not null,
-	GioDi Time not null,
+	ChiTietDiemDen varchar(100) not null,
+	GioDi varchar(5) not null,
 	BangGia Money not null,
 	MaXe int not null,
-	MaNV char(10) not null,
+	MaNV int not null,
 
 	foreign key(MaXe) references dbo.Xe(MaXe),
 	foreign key(MaNV) references dbo.NhanVien(MaNV)
@@ -56,7 +58,7 @@ create table VeXe(
 	TenKH nchar(30) not null,
 	SDTKH varchar(10) not null,
 	MaCX int not null,
-	MaNV char(10) not null
+	MaNV int not null
 
 	foreign key(MaCX) references dbo.ChuyenXe(MaCX),
 	foreign key(MaNV) references dbo.NhanVien(MaNV)

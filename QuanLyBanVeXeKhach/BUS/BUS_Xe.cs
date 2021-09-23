@@ -9,50 +9,50 @@ using System.Windows.Forms;
 
 namespace QuanLyBanVeXeKhach.BUS
 {
-    class BUS_NhanVien
+    class BUS_Xe
     {
-        DAO_NhanVien dNhanVien;
+        DAO_Xe dXe;
 
-        public BUS_NhanVien()
+        public BUS_Xe()
         {
-            dNhanVien = new DAO_NhanVien();
+            dXe = new DAO_Xe();
         }
 
-        public void layDSNV(DataGridView dg)
+        public void layDSXe(DataGridView dg)
         {
-            dg.DataSource = dNhanVien.layDSNV();
+            dg.DataSource = dXe.layDSXe();
         }
 
-        public void layDSLoaiNV(ComboBox cb)
+        public void layDSLoaiXe(ComboBox cb)
         {
-            cb.DataSource = dNhanVien.layDSLoaiNV();
-            cb.DisplayMember = "TenLoaiNV";
-            cb.ValueMember = "MaLoaiNV";
+            cb.DataSource = dXe.layDSLoaiXe();
+            cb.DisplayMember = "TenLoaiXe";
+            cb.ValueMember = "MaLoaiXe";
         }
 
-        public bool themNV(NhanVien nv)
+        public bool themXe(Xe xe)
         {
             try
             {
-                dNhanVien.themNV(nv);
+                dXe.themXe(xe);
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
         }
 
-        public bool suaNV(NhanVien nv)
+        public bool suaXe(Xe xe)
         {
-            if(dNhanVien.kiemTraNV(nv))
+            if (dXe.kiemTraXe(xe))
             {
                 try
                 {
-                    dNhanVien.suaNV(nv);
+                    dXe.suaXe(xe);
                     return true;
                 }
-                catch(DbUpdateException ex)
+                catch (DbUpdateException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return false;
@@ -64,13 +64,13 @@ namespace QuanLyBanVeXeKhach.BUS
             }
         }
 
-        public bool xoaNV(NhanVien nv)
+        public bool xoaXe(Xe xe)
         {
-            if (dNhanVien.kiemTraNV(nv))
+            if (dXe.kiemTraXe(xe))
             {
                 try
                 {
-                    dNhanVien.xoaNV(nv);
+                    dXe.xoaXe(xe);
                     return true;
                 }
                 catch (DbUpdateException ex)

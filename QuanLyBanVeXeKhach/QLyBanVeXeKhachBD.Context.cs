@@ -29,7 +29,6 @@ namespace QuanLyBanVeXeKhach
         public virtual DbSet<LoaiNhanVien> LoaiNhanViens { get; set; }
         public virtual DbSet<LoaiXe> LoaiXes { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VeXe> VeXes { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
     }

@@ -9,50 +9,57 @@ using System.Windows.Forms;
 
 namespace QuanLyBanVeXeKhach.BUS
 {
-    class BUS_NhanVien
+    class BUS_ChuyenXe
     {
-        DAO_NhanVien dNhanVien;
+        DAO_ChuyenXe dCX;
 
-        public BUS_NhanVien()
+        public BUS_ChuyenXe()
         {
-            dNhanVien = new DAO_NhanVien();
+            dCX = new DAO_ChuyenXe();
         }
 
-        public void layDSNV(DataGridView dg)
+        public void layDSCX(DataGridView dg)
         {
-            dg.DataSource = dNhanVien.layDSNV();
+            dg.DataSource = dCX.layDSChuyenXe();
         }
 
-        public void layDSLoaiNV(ComboBox cb)
+        public void layDSNV(ComboBox cb)
         {
-            cb.DataSource = dNhanVien.layDSLoaiNV();
-            cb.DisplayMember = "TenLoaiNV";
-            cb.ValueMember = "MaLoaiNV";
+            cb.DataSource = dCX.layDSNV();
+            cb.DisplayMember = "HoTen";
+            cb.ValueMember = "MaNV";
         }
 
-        public bool themNV(NhanVien nv)
+        public void layDSXe(ComboBox cb)
+        {
+            cb.DataSource = dCX.layDSXe();
+            cb.DisplayMember = "BienSo";
+            cb.ValueMember = "MaXe";
+        }
+
+        public bool themCX(ChuyenXe cx)
         {
             try
             {
-                dNhanVien.themNV(nv);
+                dCX.themCX(cx);
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
         }
 
-        public bool suaNV(NhanVien nv)
+        public bool suaCX(ChuyenXe cx)
         {
-            if(dNhanVien.kiemTraNV(nv))
+            if (dCX.kiemTraCX(cx))
             {
                 try
                 {
-                    dNhanVien.suaNV(nv);
+                    dCX.suaCX(cx);
                     return true;
                 }
-                catch(DbUpdateException ex)
+                catch (DbUpdateException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return false;
@@ -64,13 +71,13 @@ namespace QuanLyBanVeXeKhach.BUS
             }
         }
 
-        public bool xoaNV(NhanVien nv)
+        public bool xoaCX(ChuyenXe cx)
         {
-            if (dNhanVien.kiemTraNV(nv))
+            if (dCX.kiemTraCX(cx))
             {
                 try
                 {
-                    dNhanVien.xoaNV(nv);
+                    dCX.xoaCX(cx);
                     return true;
                 }
                 catch (DbUpdateException ex)

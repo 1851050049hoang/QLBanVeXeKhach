@@ -7,11 +7,13 @@
     <Property Name="MaCX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenCX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DiemDi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChiTietDiemDi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DiemDen" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="GioDi" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ChiTietDiemDen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GioDi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="BangGia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="MaXe" Type="Int32" Nullable="false" />
-    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaNV" Type="Int32" Nullable="false" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChuyenXe__MaNV__2F10007B" FromRole="ChuyenXe" ToRole="NhanVien" />
     <NavigationProperty Name="Xe" Relationship="Self.FK__ChuyenXe__MaXe__2E1BDC42" FromRole="ChuyenXe" ToRole="Xe" />
     <NavigationProperty Name="VeXes" Relationship="Self.FK__VeXe__MaNV__31EC6D26" FromRole="ChuyenXe" ToRole="VeXe" />
@@ -36,7 +38,7 @@
     <Key>
       <PropertyRef Name="MaNV" />
     </Key>
-    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="HoTen" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="GioiTinh" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
@@ -48,16 +50,6 @@
     <NavigationProperty Name="LoaiNhanVien" Relationship="Self.FK__NhanVien__MaLoai__267ABA7A" FromRole="NhanVien" ToRole="LoaiNhanVien" />
     <NavigationProperty Name="VeXes" Relationship="Self.FK__VeXe__MaNV__32E0915F" FromRole="NhanVien" ToRole="VeXe" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="VeXe">
     <Key>
       <PropertyRef Name="MaVX" />
@@ -66,7 +58,7 @@
     <Property Name="TenKH" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="SDTKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaCX" Type="Int32" Nullable="false" />
-    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaNV" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ChuyenXe" Relationship="Self.FK__VeXe__MaNV__31EC6D26" FromRole="VeXe" ToRole="ChuyenXe" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__VeXe__MaNV__32E0915F" FromRole="VeXe" ToRole="NhanVien" />
   </EntityType>
@@ -158,7 +150,6 @@
     <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
     <EntitySet Name="LoaiXes" EntityType="Self.LoaiXe" />
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="VeXes" EntityType="Self.VeXe" />
     <EntitySet Name="Xes" EntityType="Self.Xe" />
     <AssociationSet Name="FK__ChuyenXe__MaNV__2F10007B" Association="Self.FK__ChuyenXe__MaNV__2F10007B">

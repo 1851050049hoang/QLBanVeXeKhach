@@ -21,7 +21,7 @@ namespace QuanLyBanVeXeKhach
             this.VeXes = new HashSet<VeXe>();
         }
     
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
         public string HoTen { get; set; }
         public System.DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
